@@ -32,7 +32,32 @@
     </dependency>
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>test</id>
+      <properties>
+        <propiedad.uno>TEST1</propiedad.uno>
+        <propiedad.dos>TEST2</propiedad.dos>
+      </properties>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <propiedad.uno>PRODUCCION1</propiedad.uno>
+        <propiedad.dos>PRODUCCION2</propiedad.dos>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
+
+    <resources>
+      <resource>
+        <directory>/src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -73,6 +98,16 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.9.0</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
